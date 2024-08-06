@@ -1,10 +1,10 @@
 CC = g++
-CFLAGS = --std=c++17 -O2 -Wall -Werror -pedantic -g 
+CFLAGS = --std=c++17 -O2 -Wall -pedantic -g 
 LIB = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # Your .hpp files 
 DEPS =
 # Your compiled .o files
-OBJECTS =
+OBJECTS = lve_pipeline.o my_engine_device.o
 # The name of your program
 PROGRAM = test
 

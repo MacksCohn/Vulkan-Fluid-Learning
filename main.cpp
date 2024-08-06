@@ -5,13 +5,17 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstdlib>
+#include <vector>
+#include "./lve_pipeline.hpp"
 
 class HelloTriangleApplication {
  private:
     const size_t WIDTH = 800;
     const size_t HEIGHT = 600;
     GLFWwindow* window;
+    lve::LvePipeline lvePipeline{"shaders/simple_shader.vert", "shaders/simple_shader.frag"};
     VkInstance instance;
+
 
 
     void initWindow() {
@@ -47,9 +51,20 @@ class HelloTriangleApplication {
             throw std::runtime_error("Unable to create instance.");
         }
     }
+    void pickPhysicalDevice() {
+        VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
+        uint32_t deviceCount = 0;
+        vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
+        if (deviceCount == 0) {
+            throw std::runtime_error("failed to find GPUs with Vulkan support!");
+        }
+        std::vector<VkPhysicalDevice> devices(deviceCount);
+        vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
+    }
 
     void initVulkan() {
         createInstance();
+        pickPhysicalDevice();
     }
 
     void mainLoop() {
