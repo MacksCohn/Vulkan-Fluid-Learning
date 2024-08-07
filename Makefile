@@ -2,11 +2,11 @@ CC = g++
 CFLAGS = --std=c++17 -O2 -Wall -pedantic -g 
 LIB = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # Your .hpp files 
-DEPS =
+DEPS = lve_window.hpp lve_pipeline.hpp lve_device.hpp
 # Your compiled .o files
-OBJECTS = lve_pipeline.o my_engine_device.o
+OBJECTS = first_app.o lve_window.o lve_pipeline.o lve_device.o
 # The name of your program
-PROGRAM = test
+PROGRAM = app
 
 .PHONY: all clean lint
 

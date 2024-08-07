@@ -8,7 +8,7 @@
 
 namespace lve {
 
-struct SwapChainSupportDetails {
+struct SwapChainSupportDetails { 
   VkSurfaceCapabilitiesKHR capabilities;
   std::vector<VkSurfaceFormatKHR> formats;
   std::vector<VkPresentModeKHR> presentModes;
@@ -22,7 +22,7 @@ struct QueueFamilyIndices {
   bool isComplete() { return graphicsFamilyHasValue && presentFamilyHasValue; }
 };
 
-class MyEngineDevice {
+class LveDevice {
  public:
 #ifdef NDEBUG
   const bool enableValidationLayers = false;
@@ -30,14 +30,14 @@ class MyEngineDevice {
   const bool enableValidationLayers = true;
 #endif
 
-  MyEngineDevice(MyEngineWindow &window);
-  ~MyEngineDevice();
+  LveDevice(LveWindow &window);
+  ~LveDevice();
 
   // Not copyable or movable
-  MyEngineDevice(const MyEngineDevice &) = delete;
-  void operator=(const MyEngineDevice &) = delete;
-  MyEngineDevice(MyEngineDevice &&) = delete;
-  MyEngineDevice &operator=(MyEngineDevice &&) = delete;
+  LveDevice(const LveDevice &) = delete;
+  void operator=(const LveDevice &) = delete;
+  LveDevice(LveDevice &&) = delete;
+  LveDevice &operator=(LveDevice &&) = delete;
 
   VkCommandPool getCommandPool() { return commandPool; }
   VkDevice device() { return device_; }
@@ -93,7 +93,7 @@ class MyEngineDevice {
   VkInstance instance;
   VkDebugUtilsMessengerEXT debugMessenger;
   VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
-  MyEngineWindow &window;
+  LveWindow &window;
   VkCommandPool commandPool;
 
   VkDevice device_;

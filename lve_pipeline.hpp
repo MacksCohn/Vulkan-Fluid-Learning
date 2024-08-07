@@ -3,14 +3,30 @@
 
 #include <string>
 #include <vector>
+#include "./lve_device.hpp"
 
 namespace lve
 {
+   struct PipelineConfigInfo {
+
+   };
 class LvePipeline {
  private:
+    LveDevice& lveDevice;
+    VkPipeline graphicsPipeline;
+    VkShaderModule vertShaderModule;
+    VkShaderModule fragShaderModule;
+
+    void createShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule);
+
     static std::vector<char> readFile(const std::string& filepath);
-    void createGraphicsPipeline(const std::string& vert_file_path, const std::string& frag_file_path);
+    void createGraphicsPipeline(const std::string& vert_file_path, const std::string& frag_file_path, const PipelineConfigInfo& configInfo);
  public:
-  LvePipeline(const std::string& vert_file_path, const std::string& frag_file_path);
+    LvePipeline(LveDevice &device, const std::string& vert_file_path, const std::string& frag_file_path, const PipelineConfigInfo& configInfo);
+    ~LvePipeline() {}
+    LvePipeline(const LvePipeline&) = delete;
+    void operator=(const LvePipeline&) = delete;
+
+    static PipelineConfigInfo defaultPipelineConfigInfo(uint32_t width, uint32_t height);
 };
 }  // namespace lve
