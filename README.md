@@ -5,7 +5,7 @@ Create a fluid simulation
 
 # Steps
 - [x] Make a window
-- [ ] Draw a triangle with Vulkan
+- [x] Draw a triangle with Vulkan
 - [ ] Draw a ball
 - [ ] Make it fall
 - [ ] Make the ball bounce on the edges of the window
