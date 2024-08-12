@@ -2,9 +2,9 @@ CC = g++
 CFLAGS = --std=c++17 -O2 -Wall -pedantic -g 
 LIB = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # Your .hpp files 
-DEPS = lve_window.hpp lve_pipeline.hpp lve_device.hpp
+DEPS = lve_window.hpp lve_pipeline.hpp lve_device.hpp lve_swap_chain.hpp
 # Your compiled .o files
-OBJECTS = first_app.o lve_window.o lve_pipeline.o lve_device.o
+OBJECTS = first_app.o lve_window.o lve_pipeline.o lve_device.o lve_swap_chain.o
 # The name of your program
 PROGRAM = app
 
